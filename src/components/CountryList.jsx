@@ -1,6 +1,6 @@
 import React from 'react';
 import Spinner from "./Spinner"
-import styles from './CountriesList.module.css'
+import styles from './CountryList.module.css'
 import CityItem from './CityItem';
 import Message from "./Message"
 function CountriesList({cities, isLoading}) {
