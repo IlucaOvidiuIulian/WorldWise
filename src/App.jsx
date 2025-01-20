@@ -15,6 +15,7 @@ import { CitiesProvider } from "./contexts/CitiesContext";
 npm start - run app
 npm run server - run json server
 */
+
 export default function App() {
   return (
     <CitiesProvider>

@@ -3,7 +3,11 @@ import Spinner from "./Spinner";
 import styles from "./CountryList.module.css";
 import CountryItem from "./CountryItem";
 import Message from "./Message";
-function CountriesList({ cities, isLoading }) {
+import { useCities } from "../contexts/CitiesContext";
+
+function CountryList() {
+  const { cities, isLoading } = useCities();
+
   if (isLoading) return <Spinner />;
 
   const countries = cities.reduce((arr, city) => {
@@ -27,4 +31,4 @@ function CountriesList({ cities, isLoading }) {
   );
 }
 
-export default CountriesList;
+export default CountryList;
