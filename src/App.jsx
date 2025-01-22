@@ -14,6 +14,7 @@ import { CitiesProvider } from "./contexts/CitiesContext";
 /*
 npm start - run app
 npm run server - run json server
+npm install react-leaflet@4 leaflet
 */
 
 export default function App() {

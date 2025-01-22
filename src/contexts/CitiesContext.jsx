@@ -26,6 +26,7 @@ function CitiesProvider({ children }) {
     }
     fetchCities();
   }, []);
+
   async function getCity(id) {
     try {
       setIsLoading(true);
