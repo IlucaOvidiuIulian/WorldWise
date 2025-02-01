@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Map.module.css";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   MapContainer,
   Marker,
@@ -12,8 +12,10 @@ import {
 import { useCities } from "../contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeolocation";
 import Button from "../components/Button";
+import { useUrlPosition } from "../hooks/useUrlPosition";
 
 function Map() {
+  const [mapLat, mapLng] = useUrlPosition();
   const { cities } = useCities();
   const [mapPosition, setMapPosition] = useState([40, 0]);
   const {
@@ -21,10 +23,10 @@ function Map() {
     position: geolocationPosition,
     getPosition,
   } = useGeolocation();
+  // const [searchParams] = useSearchParams();
+  // const mapLat = searchParams.get("lat");
+  // const mapLng = searchParams.get("lng");
 
-  const [searchParams] = useSearchParams();
-  const mapLat = searchParams.get("lat");
-  const mapLng = searchParams.get("lng");
   useEffect(
     function () {
       if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
@@ -87,10 +89,11 @@ function DetectClick() {
 
   useMapEvents({
     click: (e) => {
-      navigate(`form?lat=${e.latlng.lat}&${e.latlng.lng}`);
+      navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
     },
   });
 }
 
 export default Map;
+
 // https://leafletjs.com/examples/quick-start/
